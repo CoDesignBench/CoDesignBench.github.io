@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Co-Design Bench · Multimodal collaborative coding evaluation</title>
+  <meta name="description" content="Co-Design Bench evaluates coding agents on 273 application revision tasks with runnable pre-edit apps and 2,331 hidden acceptance criteria. The strongest of ten endpoints passes 69.9% of criteria per task but fully delivers only 26.4% of tasks.">
+  <meta name="theme-color" content="#faf8f3">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Co-Design Bench — Multimodal Collaborative Coding Evaluation for Agentic Models">
+  <meta property="og:description" content="273 application revision tasks · 2,331 hidden acceptance criteria · 10 agentic model endpoints. Criterion coverage is not complete delivery.">
+  <meta property="og:image" content="https://codesignbench.github.io/assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://codesignbench.github.io/assets/social.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/logo/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+  <script>if (/^https?:/.test(location.protocol)) ['dm-serif-display-normal-latin', 'dm-sans-normal-latin'].forEach(function (f) { var l = document.createElement('link'); l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous'; l.href = 'vendor/fonts/' + f + '.woff2'; document.head.appendChild(l); });</script>
+  <link rel="stylesheet" href="vendor/fonts.css">
+  <link rel="stylesheet" href="style.css?v=20261023-qwen">
+  <script defer src="data/site-data.js?v=20261023-qwen"></script>
+  <script defer src="app.js?v=20261023-qwen"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#" aria-label="Co-Design Bench home"><img src="assets/logo/capybara.webp" alt="" width="46" height="46"><span>Co-Design <span class="brand-accent">Bench</span></span></a>
+    <nav aria-label="Main navigation"><a href="#leaderboard">Leaderboard</a><a href="#benchmark" class="nav-optional">Benchmark</a><a href="#cases">Cases</a><a href="#evaluation">Evaluation</a><a href="#citation" class="nav-optional">Cite</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <p class="eyebrow"><span class="small-line"></span>A benchmark for multimodal coding agents</p>
+      <h1 id="hero-title">Co-Design <span class="h1-accent">Bench</span><span class="title-period">.</span></h1>
+      <p class="hero-subtitle">Multimodal Collaborative Coding Evaluation<br class="desktop-break"> for Agentic Models</p>
+      <p class="authors" id="authors">Xilin&nbsp;Wei<sup>1,2</sup>, Shengyuan&nbsp;Ding<sup>2</sup>, Xinyu&nbsp;Fang<sup>1,3</sup>, Tiancheng&nbsp;Gu<sup>1,4</sup>, Yuchi&nbsp;Wang<sup>1,5</sup>, Zhixun&nbsp;Li<sup>1,5</sup>, Ziyu&nbsp;Liu<sup>6</sup>, Yuhang&nbsp;Zang<sup>7</sup>, Dahua&nbsp;Lin<sup>5</sup>, Hang&nbsp;Zhang<sup>1</sup>, Shuai&nbsp;Bai<sup>1</sup>, Dayiheng&nbsp;Liu<sup>1</sup></p>
+      <p class="affiliations"><span><sup>1</sup>Alibaba Token Hub, Alibaba Group</span> <span><sup>2</sup>Fudan University</span> <span><sup>3</sup>Zhejiang University</span> <span><sup>4</sup>University of Sydney</span> <span><sup>5</sup>The Chinese University of Hong Kong</span> <span><sup>6</sup>Shanghai Jiao Tong University</span> <span><sup>7</sup>Nanyang Technological University</span></p>
+      <div class="hero-actions">
+        <a class="button primary" href="paper/co-design-bench.pdf" target="_blank" rel="noopener"><span aria-hidden="true">▤</span> Read the paper</a>
+        <a class="button" href="#leaderboard">View scores <span aria-hidden="true">↗</span></a>
+        <a class="button" href="#cases"><span aria-hidden="true">◇</span> Explore real tasks</a>
+        <a class="button" href="#citation"><span aria-hidden="true">❝</span> Cite</a>
+      </div>
+      <div class="hero-gallery" id="hero-gallery" role="group" aria-label="Example benchmark tasks"></div>
+      <div class="hero-caption"><span>Real requests. Runnable apps. Hidden criteria.</span><a href="#cases">Step inside a task <span aria-hidden="true">↗</span></a></div>
+      <div class="stat-row" role="group" aria-label="Benchmark at a glance">
+        <div><strong>273</strong><span>application revision tasks</span></div>
+        <div><strong>2,331</strong><span>hidden acceptance criteria</span></div>
+        <div><strong>10</strong><span>agentic model endpoints</span></div>
+        <div><strong>5</strong><span>input modalities</span></div>
+      </div>
+    </section>
+
+    <section class="results-section" id="leaderboard" aria-labelledby="leaderboard-title">
+      <div class="wrap section">
+        <div class="section-heading"><div><h2 id="leaderboard-title">Leaderboard.</h2><p>Ten model endpoints, one shared agentic harness, the same 273 tasks.</p></div></div>
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="segmented" role="group" aria-label="Task set"><button type="button" data-track="overall" aria-pressed="true">All 273</button><button type="button" data-track="me" aria-pressed="false">ME · 100</button><button type="button" data-track="re" aria-pressed="false">RE · 173</button></div>
+            <div class="segmented" role="group" aria-label="Table view"><button type="button" data-view="completion" aria-pressed="true">Completion</button><button type="button" data-view="rollout" aria-pressed="false">Rollout</button></div>
+          </div>
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="model-search" type="search" aria-label="Search models" placeholder="Find a model…"></label>
+        </div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable leaderboard">
+          <table class="leaderboard" id="score-table"><caption class="sr-only" id="score-caption">Leaderboard</caption><thead id="score-head"></thead><tbody id="score-body"></tbody></table>
+        </div>
+        <div class="mix-legend" id="mix-legend" hidden><span><i style="background:var(--exec)"></i>Execution (Bash)</span><span><i style="background:var(--insp)"></i>Inspection (Read / Grep / Glob)</span><span><i style="background:var(--mod)"></i>Modification (Edit / Write)</span><span><i style="background:var(--aux)"></i>Auxiliary</span></div>
+        <p class="table-note" id="table-note"></p>
+        <details class="metric-guide">
+          <summary>How to read this table <span class="plus" aria-hidden="true">+</span></summary>
+          <div class="metric-grid">
+            <p><b>Strict completion</b>Per task, the fraction of criteria judged PASS; averaged over tasks with equal weight so long rubrics do not dominate. PARTIAL earns no strict credit.</p>
+            <p><b>Graded completion</b>Same average with PARTIAL worth 0.5. On a normalized scale, Full-pass ≤ Strict ≤ Graded.</p>
+            <p><b>Full-pass rate</b>Percentage of tasks where every criterion is PASS — complete delivery. The gap to Strict is criterion credit from unfinished tasks.</p>
+            <p><b>Turns · Len.</b>Median solver turns per task, and mean output tokens per turn.</p>
+            <p><b>Tokens</b>Total token traffic per task in millions, including retries and reported cache usage under each API’s accounting; an execution measure, not a monetary cost.</p>
+            <p><b>Tool mix</b>Share of tool calls for execution (Bash), inspection (Read / Grep / Glob) and modification (Edit / Write); the remainder is auxiliary.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="motivation wrap" aria-labelledby="motivation-title">
+      <div class="motivation-grid">
+        <div>
+          <p class="eyebrow">Why another benchmark</p>
+          <h2 id="motivation-title">Agentic execution <br>changes the score.</h2>
+          <p>On the same 150 WebCompass-edit tasks, switching <code>qwen3.7-plus</code> from single-shot to agentic execution raises mean graded feature completion from 73.6% to 95.1%, with the feature rubric, judge and render pipeline held fixed. With agentic execution, <code>opus-4-8</code> reaches 99.4%.</p>
+          <p>Co-Design Bench evaluates real users’ compound revisions under iterative tool access, and reports both criterion satisfaction and complete task success.</p>
+          <p class="micro">The cross-benchmark bars use different task pools and evaluation protocols; the paired WebCompass comparison concerns execution within a fixed task set (paper, Appendix A).</p>
+        </div>
+        <figure class="figure-card" id="saturation-figure">
+          <div class="figure-head"><h3>Mean graded completion (%)</h3><span>Figure 1(a), redrawn</span></div>
+          <div id="saturation-chart" class="svg-chart" role="figure" aria-label="Bar chart: on WebCompass-edit, single-shot qwen3.7-plus 73.6, agentic qwen3.7-plus 95.1, agentic opus-4-8 99.4; on Co-Design Bench, agentic Opus 64.9, leaving 35.1 points of headroom."></div>
+          <figcaption>The Co-Design Bench bar (n = 273) matches <code>opus-4-8</code>’s graded completion over all tasks in Table 5 (0.649).</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="intro wrap section" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="section-label">The benchmark</div>
+      <div class="intro-layout">
+        <h2 id="benchmark-title">From a real request <br>to a working revision.</h2>
+        <div>
+          <p class="lead">Can a coding agent turn a user’s multimodal request into a complete, working revision of an existing application?</p>
+          <p>Each task pairs a normalized request with a runnable pre-edit application and hidden, expert-authored acceptance criteria. Requests can carry image, audio, video or document evidence. The criteria specify the requested outcomes and any preservation constraints while permitting any valid implementation — so no gold code or target screenshot is needed.</p>
+          <div class="formulation" role="group" aria-label="Task formulation t = (S, I, C)">
+            <div><b>S</b><span>A runnable pre-edit baseline and its containerized environment.</span></div>
+            <div><b>I</b><span>The normalized request, optional attachments and retained session history.</span></div>
+            <div><b>C</b><span>Hidden criteria that the agent never sees during execution.</span></div>
+          </div>
+          <details class="abstract-details">
+            <summary>Read the abstract <span class="plus" aria-hidden="true">+</span></summary>
+            <p>Evaluating human–AI co-design requires testing whether coding agents can translate real users’ multimodal requests into working application revisions. We introduce Co-Design Bench, a reference-free benchmark of 273 tasks curated from 37,463 deduplicated queries across 26,314 real user coding sessions. Its two tracks, Multimodal Editing (ME) and Repository Editing (RE), cover localized edits with optional image, audio, video, or document inputs and coordinated repository revisions. Tasks span three capability dimensions: Grounded Understanding, UI Transformation, and Functional Implementation. The tasks pair normalized requests and runnable pre-edit applications with 2,331 hidden expert-authored acceptance criteria. Our judge-then-refute protocol grades criteria using source and browser evidence, challenges positive verdicts with a separate LLM verifier, and audits visual and interaction claims without gold code or target screenshots. Under a shared agentic harness, the strongest of ten model endpoints passes an average of 69.9% of criteria per task but fully satisfies only 26.4% of tasks. All ten endpoints achieve lower criterion completion on repository edits spanning three or four change types than on those spanning one or two. Co-Design Bench provides a testbed for studying the gap between partial requirement satisfaction and complete task success under agentic execution for real-user application revisions.</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="track-cards">
+        <article class="track-card me" aria-labelledby="track-me-title">
+          <div class="track-card-top">
+            <div><span class="track-tag"><i></i>Track 1 · ME</span><h3 id="track-me-title">Multimodal Editing</h3></div>
+            <div class="track-count"><strong>100</strong><span>tasks</span></div>
+          </div>
+          <p>Localized visual, structural and content edits. The agent receives a runnable page, an annotated target region, a normalized request and optional image, audio, video or document attachments. Rubrics also check that unrelated content is preserved when requested.</p>
+          <div class="dist-title"><span>Primary attachment modality</span><b>100 tasks</b></div>
+          <div class="dist-bar" id="me-modality-bar" aria-hidden="true"></div>
+          <ul class="dist-legend" id="me-modality-legend"><li><b>20</b> None</li><li><b>4</b> Image</li><li><b>27</b> Video</li><li><b>32</b> Audio</li><li><b>17</b> Document</li></ul>
+          <div class="track-foot"><div><b>553</b>criteria</div><div><b>5.5</b>criteria per task</div><div><b>79 / 21</b>single page / bundled</div></div>
+        </article>
+        <article class="track-card re" aria-labelledby="track-re-title">
+          <div class="track-card-top">
+            <div><span class="track-tag"><i></i>Track 2 · RE</span><h3 id="track-re-title">Repository Editing</h3></div>
+            <div class="track-count"><strong>173</strong><span>tasks</span></div>
+          </div>
+          <p>Coordinated changes across components, routes, state, data flow and content in runnable multi-file frontend repositories. Experts decompose compound requests into separately auditable criteria, leaving implementation choices open.</p>
+          <div class="dist-title"><span>Edit types required (tasks can need several)</span><b>173 tasks</b></div>
+          <div class="overlap-rows" id="re-edit-types">
+            <div class="overlap-row"><span>Structure</span><div class="overlap-track"><span style="width:87.3%"></span></div><b>151<small>87%</small></b></div>
+            <div class="overlap-row"><span>Style</span><div class="overlap-track"><span style="width:76.9%"></span></div><b>133<small>77%</small></b></div>
+            <div class="overlap-row"><span>Interactive</span><div class="overlap-track"><span style="width:75.7%"></span></div><b>131<small>76%</small></b></div>
+            <div class="overlap-row"><span>Content</span><div class="overlap-track"><span style="width:64.7%"></span></div><b>112<small>65%</small></b></div>
+          </div>
+          <div class="track-foot"><div><b>1,778</b>criteria</div><div><b>10.3</b>criteria per task</div><div><b>166</b>need 2+ edit types</div></div>
+        </article>
+      </div>
+
+      <div class="subsection" aria-labelledby="pipeline-title">
+        <div class="subsection-head">
+          <div><p class="eyebrow">How the tasks were built</p><h3 id="pipeline-title">Recovered, validated, then judged by experts.</h3></div>
+          <p>Every starting application must build, launch and render before it becomes a task. Requests are deduplicated, filtered, ranked by difficulty, verifiability and historical failure signals, then consolidated into bounded tasks with hidden criteria (paper, Section 3.2 and Appendix I).</p>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-row">
+            <h4>(a) Recover runnable starting states</h4>
+            <div class="pipeline-steps four">
+              <div class="step"><h5><span class="step-num">01</span>Session corpus</h5><span class="big">39,325</span><p>production queries across 26,314 real coding sessions, with their repositories, context and attachments.</p></div>
+              <div class="step"><h5><span class="step-num">02</span>Recover pre-edit state</h5><p>Anchor each candidate to its target edit turn, then restore repository, assets and context with a source-hash snapshot.</p></div>
+              <div class="step"><h5><span class="step-num">03</span>Build &amp; render gate</h5><ul class="checks"><li>dependencies &amp; build</li><li>container launch</li><li>Playwright render</li></ul><div class="pill-row"><span class="pill warn">↻ repair: diagnose → fix → re-check</span><span class="pill bad">✕ prune unrecoverable services</span></div></div>
+              <div class="step"><h5><span class="step-num">04</span>Runnable package</h5><pre class="tree">task/
+├─ baseline/
+├─ env.manifest
+├─ request + media/
+└─ validation.log</pre></div>
+            </div>
+          </div>
+          <div class="pipeline-row">
+            <h4>(b) Select requests and author criteria</h4>
+            <div class="pipeline-steps five">
+              <div class="step"><h5><span class="step-num">05</span>Deduplicate</h5><span class="big">37,463</span><p>unique queries after exact-hash and near-duplicate removal (token Jaccard &gt; 0.8).</p></div>
+              <div class="step"><h5><span class="step-num">06</span>Normalize</h5><p>Decode attachments, rewrite pasted-image references, optional privacy screen.</p></div>
+              <div class="step"><h5><span class="step-num">07</span>Filter</h5><p>Hard filters F1–F6 drop environment-blocked, non-actionable, unbounded and non-editing requests. Any hit → drop.</p></div>
+              <div class="step"><h5><span class="step-num">08</span>Rank</h5><p><code>r = d + v + f</code></p><p>difficulty 0–5 · verifiability 0–3 · historical failure signal 0–2.</p></div>
+              <div class="step"><h5><span class="step-num">09</span>Consolidate</h5><p>At most three queries per session become one bounded task; experts refine the request and write hidden criteria.</p></div>
+            </div>
+            <div class="pipeline-result">
+              <div class="result-brand"><img src="assets/logo/capybara.webp" alt="" width="42" height="42"><span>Co-Design Bench</span></div>
+              <div class="result-stats"><span><b>273</b>tasks</span><span><b>2,331</b>criteria</span><div class="split-bar" role="img" aria-label="100 ME tasks and 173 RE tasks"><span class="me" style="flex:100">ME 100</span><span class="re" style="flex:173">RE 173</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection" aria-labelledby="taxonomy-title">
+        <div class="subsection-head">
+          <div><p class="eyebrow">What the tasks test</p><h3 id="taxonomy-title">Three dimensions, nine categories, thirty capabilities.</h3></div>
+          <p>Each task has one primary label for its main delivery objective; additional labels record its other required capabilities — 1,172 task–capability associations in all. 265 of 273 tasks carry multiple labels and 174 span more than one dimension.</p>
+        </div>
+        <div class="tax-toolbar">
+          <div class="segmented" role="group" aria-label="Capability count"><button type="button" data-tax-mode="any" aria-pressed="true">Any label</button><button type="button" data-tax-mode="primary" aria-pressed="false">Primary label</button></div>
+          <span class="micro" id="tax-caption">Tasks requiring each capability (labels overlap).</span>
+        </div>
+        <div class="taxonomy" id="taxonomy"></div>
+      </div>
+
+      <div class="subsection" aria-labelledby="compare-title">
+        <div class="subsection-head">
+          <div><p class="eyebrow">How it compares</p><h3 id="compare-title">Real sessions, reference-free, adversarially checked.</h3></div>
+          <p>Existing web-coding benchmarks cover reference reconstruction, synthetic or predefined edits, version-history edits, and repository issues. Co-Design Bench combines real-user revisions, five input modalities, reference-free acceptance, agentic evaluation and adversarial verification (paper, Table 1).</p>
+        </div>
+        <div class="compare-wrap" tabindex="0" role="region" aria-label="Comparison of web-coding benchmarks">
+          <table class="compare-table" id="compare-table"><caption class="sr-only">Task origins and evaluation capabilities of web-coding benchmarks</caption></table>
+        </div>
+        <div class="table-legend"><span><span class="mark yes" aria-hidden="true">✓</span> reported</span><span><span class="mark no" aria-hidden="true">×</span> not reported</span><span><span class="mark partial" aria-hidden="true">△</span> subset or metric-dependent</span><span>T / I / V / A / D = text / image / video / audio / document</span></div>
+        <p class="micro compare-defs">Real-user sessions are requests from real-user coding histories, excluding standalone issue reports (DesignBench’s session requests belong to its editing subset). Reference-free acceptance needs no gold code or target screenshot; a pre-edit baseline is allowed. Agentic evaluation actively chooses tools and actions, beyond fixed test replay. Adversarial verification separately challenges initial positive verdicts. Definitions follow the paper’s Table 1.</p>
+      </div>
+    </section>
+
+    <section class="results-section" id="results" aria-labelledby="results-title">
+      <div class="wrap section">
+        <div class="section-label">The results</div>
+        <div class="section-heading"><div><h2 id="results-title">Coverage is not delivery.</h2></div></div>
+        <div class="finding-row">
+          <div><span class="finding-label">Highest strict completion</span><strong>69.9<span>%</span></strong><p><code>gpt-6-astra</code> passes 69.9% of criteria per task on average across all 273 tasks.</p></div>
+          <div><span class="finding-label">Top full-pass rate</span><strong>26.4<span>%</span></strong><p>Even the leader satisfies every criterion on only about one task in four; 73.6% keep at least one unmet requirement.</p></div>
+          <div><span class="finding-label">Broader edits score lower</span><strong>−6.3<span>pts</span></strong><p>Every endpoint scores lower on repository edits spanning three or four change types than on one or two.</p></div>
+        </div>
+
+        <div class="analysis-grid">
+          <div class="chart-card">
+            <p class="eyebrow">Rankings move</p>
+            <h3>The track changes the order.</h3>
+            <p class="micro">Strict-completion rank on ME (left) and RE (right). Rankings correlate (Spearman ρ = 0.818), yet <code>qwen3.8-27b</code> climbs from fifth to second while <code>kimi-k3</code> drops from fourth to sixth.</p>
+            <div id="slope-chart" class="svg-chart" role="figure" aria-label="Slope chart of strict-completion ranks on ME versus RE for the ten endpoints; exact values are in the leaderboard."></div>
+            <p class="chart-foot">Endpoint means span 28.7 points on ME and 13.0 on RE; a combined ranking can conceal setting-specific strengths.</p>
+          </div>
+          <div class="chart-card">
+            <p class="eyebrow">The delivery gap</p>
+            <h3>Criterion credit outruns delivery.</h3>
+            <p class="micro">Strict completion versus full-pass rate across all 273 tasks. The distance between the two is criterion credit earned on tasks that still miss at least one requirement.</p>
+            <div class="legend-row"><span><i class="sq" style="background:var(--accent-wash)"></i>Strict completion</span><span><i class="sq" style="background:var(--accent)"></i>Full-pass rate</span></div>
+            <div id="gap-chart" class="svg-chart" role="figure" aria-label="Strict completion and full-pass rate for each endpoint across all 273 tasks; exact values are in the leaderboard."></div>
+          </div>
+        </div>
+
+        <div class="category-explorer">
+          <div class="category-explorer-heading">
+            <div><p class="eyebrow">Look beyond the average</p><h3>Different tasks, <br>different leaders.</h3><p>Pick a capability, an attachment modality or an edit breadth to compare all ten endpoints.</p></div>
+            <label class="sr-only" for="category-select">Task group</label><select id="category-select"></select>
+            <div class="category-groups" id="category-groups" aria-label="Select a task group"></div>
+          </div>
+          <div class="category-chart">
+            <div class="chart-heading"><div><h4 id="chart-title">Task group</h4><span id="chart-count" class="micro"></span></div><span class="micro" id="chart-unit">Mean strict completion (%)</span></div>
+            <div id="category-bars"></div>
+            <div class="chart-meta" id="chart-meta"></div>
+            <p class="chart-note" id="chart-note"></p>
+          </div>
+        </div>
+
+        <div class="insight-cards">
+          <article>
+            <p class="eyebrow">Effort is not completion</p>
+            <h4>More effort did not mean more credit.</h4>
+            <div class="nums"><div><b>32</b>turns · 1.24M tokens <br><code>gpt-6-astra</code>, ME strict 75.4%</div><div><b>69</b>turns · 7.29M tokens <br><code>glm-5.2</code>, ME strict 57.2%</div></div>
+            <p>On RE, <code>qwen3.8-27b</code> uses 57 turns and 6.72M tokens for 64.5% strict completion, versus 48 turns and 2.33M tokens for <code>gpt-6-astra</code> at 66.7%.</p>
+          </article>
+          <article>
+            <p class="eyebrow">Media in the loop</p>
+            <h4>Agents build their own perception.</h4>
+            <div class="nums"><div><b>68.5%</b>of video runs <br>call OpenCV</div><div><b>31.5%</b>of video runs <br>call ffmpeg</div></div>
+            <p>ffmpeg also appears in 25.0% of audio runs and faster-whisper in 4.4%. Some agents download and run pretrained perception models — AST, CLAP, Whisper, Qwen2-Audio, CLIP, DINOv2, OWLv2 — to ground their edits.</p>
+          </article>
+          <article>
+            <p class="eyebrow">Execution profiles</p>
+            <h4>Rollouts differ across tracks.</h4>
+            <div class="nums"><div><b>44</b>median turns <br>ME video tasks</div><div><b>27</b>median turns <br>ME text-only tasks</div></div>
+            <p>Image inspections average 14.47 per run on ME and 2.78 on RE, while the Edit/Write share of tool calls rises from 7.3% to 27.6%. These profiles describe effort; they do not isolate causal effects.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section showcase-section" id="cases" aria-labelledby="cases-title">
+      <div class="section-label">The tasks</div>
+      <div class="section-heading"><div><h2 id="cases-title">A closer look at real tasks.</h2><p>Open a task. Read the request. See qwen3.8-max-0902’s output.</p></div></div>
+      <p class="gallery-description">These examples from the public Multimodal Editing task set pair a runnable page and an annotated target with evidence the agent must interpret — a supplier receipt, an audit export, a video of text animations. The hidden rubric then tests the requested change, every dependent update, and what must remain untouched.</p>
+      <div class="showcase-grid three" id="showcase-grid"></div>
+    </section>
+
+    <section class="run-section" id="inside-a-run" aria-labelledby="run-title">
+      <div class="wrap section">
+        <div class="section-label">Inside a run</div>
+        <div class="section-heading"><div><h2 id="run-title">Watch an agent work.</h2><p>One task. One harness. qwen3.8-max-0902.</p></div></div>
+        <p class="gallery-description">A six-second reference clip shows three different text animations. The agent must map them to the hero, section title and quotation, loop each effect, and preserve the wording and page layout. This timeline follows the archived qwen3.8-max-0902 run, including the frames and screenshots the model actually looked at.</p>
+        <div class="run-picker" id="run-picker" role="group" aria-label="Choose a model"></div>
+        <p class="run-compare-note run-why">qwen3.8-max-0902 passes all six hidden criteria: 100% strict completion in the frozen paper run.</p>
+        <div class="run-layout">
+          <ol class="timeline" id="run-timeline"></ol>
+          <div class="run-side">
+            <div class="run-card" id="run-summary"></div>
+          </div>
+        </div>
+        <p class="micro" id="run-footnote">The timeline shows selected steps; the counts include every call in the archived run.</p>
+
+      </div>
+    </section>
+
+    <section class="evaluation-section" id="evaluation" aria-labelledby="evaluation-title"><div class="wrap section">
+      <div class="section-label">The evaluation</div>
+      <div class="section-heading"><div><h2 id="evaluation-title">Judge, then refute.</h2><p>Credit requires evidence that matches the claim.</p></div></div>
+      <div class="evaluation-cards">
+        <article><span class="step-number">01 / Build</span><h3>Run the candidate</h3><p>The final application is mirrored into an isolated sandbox, built with Vite or served as static HTML, and rendered in headless Chrome. Failed builds or missing DOM nodes invalidate render-dependent criteria.</p></article>
+        <article><span class="step-number">02 / Gather</span><h3>Evidence per claim</h3><p>Source diffs establish static properties, screenshots support visual requirements, and recorded Playwright actions establish interactions and their resulting state. A handler in source alone cannot prove a feature is reachable.</p></article>
+        <article><span class="step-number">03 / Judge</span><h3>Verdict per criterion</h3><p>A fixed agentic evaluator grades every hidden criterion PASS, PARTIAL or FAIL, with the pre-edit baseline available to ground what had to change.</p></article>
+        <article><span class="step-number">04 / Refute</span><h3>Challenge every credit</h3><p>A separate LLM verifier re-examines PASS and PARTIAL verdicts for stubs, hardcoded outputs, unreachable entry points and failures under varied inputs. Audits abort scoring when required evidence is missing.</p></article>
+      </div>
+      <div class="score-formula" role="group" aria-label="Scoring definitions">
+        <div class="formula-grid">
+          <div><span>Strict completion</span><p><em>R</em><sub>t</sub> = <span class="frac"><span>#&#8202;PASS</span><span><em>n</em><sub>t</sub></span></span></p><small>fully satisfied criteria in task t</small></div>
+          <div><span>Graded completion</span><p><em>G</em><sub>t</sub> = <span class="frac"><span>#&#8202;PASS + ½ #&#8202;PARTIAL</span><span><em>n</em><sub>t</sub></span></span></p><small>credits partial progress</small></div>
+          <div><span>Full-pass rate</span><p><em>F</em> = share of tasks with <em>R</em><sub>t</sub> = 1</p><small>every criterion delivered</small></div>
+        </div>
+        <div class="verdict-row" role="group" aria-label="Verdict values"><span class="verdict pass"><i></i>PASS = 1</span><span class="verdict partial"><i></i>PARTIAL = 0.5 graded · 0 strict</span><span class="verdict fail"><i></i>FAIL = 0</span></div>
+        <p class="formula-note">Task means weight all 273 tasks equally, so long rubrics do not dominate. On a common 0–1 scale <b>F ≤ R̄ ≤ Ḡ</b>, and a high R̄ can coexist with a low F when unmet requirements are spread across many tasks.</p>
+      </div>
+      <details class="pipeline-details">
+        <summary>See the full evaluation pipeline <span class="plus" aria-hidden="true">+</span></summary>
+        <figure>
+          <a href="assets/figures/evaluation-pipeline.webp" target="_blank" rel="noopener"><img src="assets/figures/evaluation-pipeline.webp" alt="Evaluation pipeline. (A) Evidence extraction and primary evaluation: query, expert rubric, baseline and output feed sandbox execution (copy, Vite build, serve), evidence extraction (code diff, DOM body text, screenshot, Playwright actions) and a primary evaluator that issues Pass, Partial or Fail. (B) Adversarial verification and attribution: an independent verifier checks stubs, hardcoding, data-flip tests, entry-to-UI reachability and semantic criteria; claim audits check renders and browser logs and abort on violations; scores and report aggregate raw scores; conditional attribution runs a baseline render and solvability agent for low-scoring cases without changing raw verdicts." loading="lazy" width="2456" height="1201"></a>
+          <figcaption>Figure 3 from the paper. For low-scoring cases (G<sub>t</sub> &lt; 0.8) with a startable baseline, a parallel solvability probe attributes failures to model limitations, environment blockage, mixed causes or starting-artifact defects. Raw scores and denominators never change; environment-adjusted scores are retained separately as a supplementary analysis.</figcaption>
+        </figure>
+      </details>
+    </div></section>
+
+    <section class="citation-section" id="citation" aria-labelledby="citation-title"><div class="wrap section">
+      <div class="section-label">Cite</div>
+      <div class="citation-layout">
+        <div>
+          <h2 id="citation-title">Cite Co-Design Bench.</h2>
+          <ul class="resource-list">
+            <li><a class="inline-link" href="paper/co-design-bench.pdf" target="_blank" rel="noopener">Paper (PDF)</a><span>22 pages · with appendix</span></li>
+            <li><a class="inline-link" href="data/site-data.json" download>Page data (JSON)</a><span>leaderboard, chart, task and run data</span></li>
+          </ul>
+        </div>
+        <div class="bibtex">
+          <button class="copy-button" type="button" id="copy-bibtex">Copy</button>
+<pre id="bibtex-text"></pre>
+        </div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="wrap">
+    <a class="brand" href="#"><img src="assets/logo/capybara.webp" alt="" width="35" height="35"><span>Co-Design <span class="brand-accent">Bench</span></span></a>
+    <p>From real requests to complete delivery.</p>
+    <a href="#">Back to top ↑</a>
+  </footer>
+
+  <dialog id="task-dialog" aria-labelledby="detail-title">
+    <div class="dialog-top"><span id="detail-kicker"></span><div><button type="button" id="previous-task" aria-label="Previous task">←</button><button type="button" id="next-task" aria-label="Next task">→</button><button type="button" id="close-dialog" class="close" aria-label="Close task details">✕</button></div></div>
+    <div class="dialog-heading"><div><p class="eyebrow" id="detail-id"></p><h2 id="detail-title"></h2><p id="detail-description"></p></div><div class="dialog-chips" id="detail-chips"></div></div>
+    <div class="detail-layout">
+      <div class="detail-visual">
+        <div class="detail-tabs" role="tablist" aria-label="Task views" id="detail-tabs"></div>
+        <div class="edit-picker" id="edit-picker" role="group" aria-label="Choose whose final application to show" hidden></div>
+        <div class="media-stage" id="media-stage" role="tabpanel"></div>
+        <p class="media-caption" id="media-caption"></p>
+      </div>
+      <aside class="score-panel" id="score-panel"></aside>
+    </div>
+    <div class="task-context" id="task-context"></div>
+  </dialog>
+  <div class="tooltip" id="tooltip" aria-hidden="true"></div>
+  <p class="sr-only" id="live-status" role="status"></p>
+  <noscript><p class="noscript">Enable JavaScript to sort the leaderboard and explore the charts, tasks and agent runs.</p></noscript>
+</body>
+</html>
