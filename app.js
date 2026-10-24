@@ -314,7 +314,7 @@
     clear(head);
     var tr = el('tr', null, [el('th', { scope: 'col' }, [el('span', { class: 'th-static', text: '#' })]), el('th', { scope: 'col' }, [el('span', { class: 'th-static', text: 'Model' })])]);
     cols.forEach(function (c) {
-      var th = el('th', { scope: 'col', title: c.title });
+      var th = el('th', { scope: 'col', title: c.title, class: c.meter ? (c.main ? 'metric-strict' : 'metric-graded') : null });
       if (c.nosort) th.appendChild(el('span', { class: 'th-static', text: c.label }));
       else {
         var active = LB.sort === c.key;
@@ -344,7 +344,7 @@
     ids.forEach(function (id, i) {
       var m = MODEL[id];
       var row = el('tr', { class: ranks[id] === 1 ? 'top-model' : null }, [
-        el('td', { text: String(ranks[id]).padStart(2, '0') }),
+        el('td', null, [el('span', { class: 'rank-badge' + (ranks[id] <= 3 ? ' rank-badge--' + ranks[id] : ''), text: String(ranks[id]).padStart(2, '0') })]),
         el('td', null, [el('span', { class: 'model-name' }, [icon(id), el('span', null, [m.name, el('small', { text: m.org })])])])
       ]);
       cols.forEach(function (c) {
