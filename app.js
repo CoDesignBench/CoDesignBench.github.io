@@ -86,23 +86,52 @@
     node.addEventListener('blur', hideTip);
   }
 
-  // ---------- hero gallery ----------
-  function renderHero() {
-    var g = $('hero-gallery'); if (!g || !D.cases) return;
-    var order = (D.heroOrder || D.cases.map(function (c) { return c.id; })).slice(0, 3);
-    order.forEach(function (cid, k) {
-      var i = D.cases.map(function (c) { return c.id; }).indexOf(cid); if (i < 0) return;
-      var c = D.cases[i];
-      var img = c.hero || c.images.annotation || c.images.baseline;
-      var b = el('button', { type: 'button', class: 'hero-tile', 'aria-label': 'Open task: ' + c.title, onclick: function () { openCase(i); } }, [
-        el('img', { src: img, alt: '', loading: k ? 'lazy' : 'eager' }),
-        el('span', { class: 'hero-tile-label' }, [
-          el('span', null, [el('small', { text: 'ME · ' + c.badge }), el('strong', { text: c.title })]),
-          el('span', { 'aria-hidden': 'true', text: '↗' })
-        ])
-      ]);
-      g.appendChild(b);
+  // ---------- featured run ----------
+  function bindDemo() {
+    var player = $('intro-player'), watch = $('watch-demo'), inspect = $('inspect-demo');
+    var playButton;
+    if (player) {
+      player.controls = false;
+      playButton = el('button', { type: 'button', class: 'demo-play', 'aria-label': 'Play agent run highlights', text: '▶', onclick: function () {
+        var playing = player.play();
+        if (playing && playing.then) playing.then(function () { player.focus({ preventScroll: true }); }).catch(function () { playButton.focus(); });
+      } });
+      player.parentElement.insertBefore(playButton, player.nextSibling);
+    }
+    if (watch && player) watch.addEventListener('click', function () {
+      var playing = player.play();
+      if (playing && playing.catch) playing.catch(function () { player.focus(); });
     });
+    if (inspect) inspect.addEventListener('click', function () {
+      pauseVideos($('intro-video'));
+      var i = D.cases.map(function (c) { return c.id; }).indexOf('7d7953f8');
+      if (i >= 0) openCase(i);
+    });
+    if (player) {
+      player.addEventListener('loadedmetadata', function () {
+        if (Number.isFinite(player.duration)) $('demo-duration').textContent = Math.round(player.duration) + ' sec';
+      });
+      player.addEventListener('play', function () {
+        player.controls = true;
+        playButton.hidden = true;
+        document.querySelectorAll('video').forEach(function (v) { if (v !== player) v.pause(); });
+      });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (!entries[0].isIntersecting) player.pause();
+        });
+        io.observe(player);
+      }
+    }
+  }
+
+  function bindAuthorDetails() {
+    var details = document.querySelector('.author-affiliations');
+    if (!details || !window.matchMedia) return;
+    var phone = window.matchMedia('(max-width: 760px)');
+    function update() { details.open = !phone.matches; }
+    update();
+    if (phone.addEventListener) phone.addEventListener('change', update);
   }
 
   // ---------- figure 1a: saturation ----------
@@ -354,12 +383,11 @@
       } else requestAnimationFrame(go);
     }
     // caption + note
-    var n = LB.track === 'overall' ? 273 : LB.track === 'me' ? 100 : 173;
     var trackName = LB.track === 'overall' ? 'all 273 tasks (Table 5)' : LB.track === 'me' ? 'the 100 Multimodal Editing tasks (Table 2)' : 'the 173 Repository Editing tasks (Table 2)';
     $('score-caption').textContent = 'Results of ten model endpoints on ' + trackName;
     $('table-note').textContent = (LB.view === 'completion'
-      ? 'Ten endpoints on ' + trackName + '. Completion scores are shown as percentages; the paper reports them on a 0–1 scale (' + ({ overall: '69.9 here = 0.699', me: '75.4 here = 0.754', re: '66.7 here = 0.667' })[LB.track] + '). Rows are ranked by strict completion; click a column heading to sort.'
-      : 'Rollout statistics on ' + trackName + ' under the shared Claude Code harness. Tool shares are independently rounded; the auxiliary remainder is shown in grey. Click a column heading to sort.') + (n ? '' : '');
+      ? 'Scores are percentages (69.9% = 0.699 in the paper). Full pass requires every criterion. Source: ' + trackName + '. Click a heading to sort.'
+      : 'Rollout statistics on ' + trackName + ' under the shared Claude Code harness. Tool shares are rounded; grey shows auxiliary calls. Click a heading to sort.');
     $('mix-legend').hidden = LB.view !== 'rollout';
     document.querySelectorAll('[data-view="rollout"]').forEach(function (b) {
       b.title = LB.track === 'overall' ? 'Rollout statistics are reported per track; this switches to ME' : '';
@@ -515,13 +543,21 @@
   var caseIndex = 0, caseTab = 'annotation', caseModel = null;
   function renderCases() {
     var grid = $('showcase-grid'); if (!grid || !D.cases) return;
-    D.cases.forEach(function (c, i) {
+    var order = ['7d7953f8', 'f725ea72', 'b0e36f34'];
+    order.forEach(function (id) {
+      var i = D.cases.map(function (c) { return c.id; }).indexOf(id);
+      if (i < 0) return;
+      var c = D.cases[i];
       var card = el('button', { type: 'button', class: 'showcase-card', 'aria-label': 'Open task: ' + c.title, onclick: function () { openCase(i); } }, [
-        el('span', { class: 'card-image' }, [el('img', { src: c.images.card || c.images.annotation, alt: '', loading: 'lazy' }), el('span', { class: 'card-badge', text: c.badge })]),
+        el('span', { class: 'card-image' }, [el('img', { src: (c.outputPosters && c.outputPosters['qwen3.8-max-0902']) || c.editsBaseline || c.images.card, alt: '', loading: 'lazy' }), el('span', { class: 'card-badge', text: c.badge })]),
         el('span', { class: 'card-info' }, [
           el('span', { class: 'card-eyebrow' }, [el('span', { text: c.modalityLabel })]),
           el('h3', { text: c.title }),
-          el('span', { class: 'card-description', text: c.summary }),
+          el('span', { class: 'card-description', text: ({
+            '7d7953f8': 'Recreate three text animations from a video reference.',
+            'f725ea72': 'Correct a receipt entry and update every dependent view.',
+            'b0e36f34': 'Reconcile an audit export across KPIs, tables and charts.'
+          })[c.id] || c.summary }),
           el('span', { class: 'card-bottom' }, [
             el('span', { class: 'cap-tag', title: 'Task capability' }, [el('i', { text: c.capability.code }), c.capability.name]),
             c.scoreSummary ? el('span', null, [el('b', { text: c.scoreSummary.value }), ' ', el('small', { text: c.scoreSummary.label })]) : el('span', { text: 'Open ↗' })
@@ -737,13 +773,14 @@
         if (links[e.target.id]) links[e.target.id].setAttribute('aria-current', 'true');
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['benchmark', 'leaderboard', 'cases', 'inside-a-run', 'evaluation', 'citation'].forEach(function (id) { var n = $(id); if (n) io.observe(n); });
+    ['intro-video', 'benchmark', 'leaderboard', 'cases', 'evaluation', 'citation'].forEach(function (id) { var n = $(id); if (n) io.observe(n); });
     var heroEl = document.querySelector('.hero'); if (heroEl) io.observe(heroEl);
   }
 
   // ---------- boot ----------
   if (D.authors) $('authors').textContent = D.authors;
-  renderHero();
+  bindAuthorDetails();
+  bindDemo();
   renderSaturation();
   renderModalityBar();
   renderTaxonomy();
@@ -759,6 +796,32 @@
   var chartWidths = {}, resizeTimer = null;
   var CHARTS = { 'saturation-chart': renderSaturation, 'slope-chart': renderSlope, 'gap-chart': renderGap };
   Object.keys(CHARTS).forEach(function (id) { var h = $(id); if (h) chartWidths[id] = h.clientWidth; });
+  // Charts are measured again when their detail view becomes visible.
+  document.querySelectorAll('details').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) { pauseVideos(d); return; }
+      requestAnimationFrame(function () {
+        Object.keys(CHARTS).forEach(function (id) {
+          var h = $(id);
+          if (h && h.getClientRects().length && h.clientWidth > 0) {
+            chartWidths[id] = h.clientWidth; CHARTS[id]();
+          }
+        });
+      });
+    });
+  });
+  function revealHashTarget() {
+    var target = $(location.hash.slice(1));
+    if (!target) return;
+    var node = target;
+    while (node) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
+    requestAnimationFrame(function () { target.scrollIntoView({ block: 'start', behavior: 'instant' }); });
+  }
+  window.addEventListener('hashchange', revealHashTarget);
+  if (location.hash) revealHashTarget();
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () {

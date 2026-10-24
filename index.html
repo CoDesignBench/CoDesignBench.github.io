@@ -19,15 +19,15 @@
   <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
   <script>if (/^https?:/.test(location.protocol)) ['dm-serif-display-normal-latin', 'dm-sans-normal-latin'].forEach(function (f) { var l = document.createElement('link'); l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous'; l.href = 'vendor/fonts/' + f + '.woff2'; document.head.appendChild(l); });</script>
   <link rel="stylesheet" href="vendor/fonts.css">
-  <link rel="stylesheet" href="style.css?v=20261023-qwen">
+  <link rel="stylesheet" href="style.css?v=20261024-compact">
   <script defer src="data/site-data.js?v=20261023-qwen"></script>
-  <script defer src="app.js?v=20261023-qwen"></script>
+  <script defer src="app.js?v=20261024-compact"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
     <a class="brand" href="#" aria-label="Co-Design Bench home"><img src="assets/logo/capybara.webp" alt="" width="46" height="46"><span>Co-Design <span class="brand-accent">Bench</span></span></a>
-    <nav aria-label="Main navigation"><a href="#leaderboard">Leaderboard</a><a href="#benchmark" class="nav-optional">Benchmark</a><a href="#cases">Cases</a><a href="#evaluation">Evaluation</a><a href="#citation" class="nav-optional">Cite</a></nav>
+    <nav aria-label="Main navigation"><a href="#intro-video">Demo</a><a href="#leaderboard">Leaderboard</a><a href="#cases">Tasks</a><a href="#evaluation" class="nav-optional">Evaluation</a><a href="#citation" class="nav-optional">Paper</a></nav>
   </header>
 
   <main id="main">
@@ -35,74 +35,76 @@
       <p class="eyebrow"><span class="small-line"></span>A benchmark for multimodal coding agents</p>
       <h1 id="hero-title">Co-Design <span class="h1-accent">Bench</span><span class="title-period">.</span></h1>
       <p class="hero-subtitle">Multimodal Collaborative Coding Evaluation<br class="desktop-break"> for Agentic Models</p>
-      <p class="authors" id="authors">Xilin&nbsp;Wei<sup>1,2</sup>, Shengyuan&nbsp;Ding<sup>2</sup>, Xinyu&nbsp;Fang<sup>1,3</sup>, Tiancheng&nbsp;Gu<sup>1,4</sup>, Yuchi&nbsp;Wang<sup>1,5</sup>, Zhixun&nbsp;Li<sup>1,5</sup>, Ziyu&nbsp;Liu<sup>6</sup>, Yuhang&nbsp;Zang<sup>7</sup>, Dahua&nbsp;Lin<sup>5</sup>, Hang&nbsp;Zhang<sup>1</sup>, Shuai&nbsp;Bai<sup>1</sup>, Dayiheng&nbsp;Liu<sup>1</sup></p>
-      <p class="affiliations"><span><sup>1</sup>Alibaba Token Hub, Alibaba Group</span> <span><sup>2</sup>Fudan University</span> <span><sup>3</sup>Zhejiang University</span> <span><sup>4</sup>University of Sydney</span> <span><sup>5</sup>The Chinese University of Hong Kong</span> <span><sup>6</sup>Shanghai Jiao Tong University</span> <span><sup>7</sup>Nanyang Technological University</span></p>
+      <p class="authors" id="authors" aria-describedby="author-notes">
+        <span class="author">Xilin&nbsp;Wei<sup>1,2,*</sup></span>,
+        <span class="author">Shengyuan&nbsp;Ding<sup>1,*</sup></span>,
+        <span class="author">Xinyu&nbsp;Fang<sup>2,3,*</sup></span>,
+        <span class="author">Tiancheng&nbsp;Gu<sup>2</sup></span>,
+        <span class="author">Yuchi&nbsp;Wang<sup>2,4</sup></span>,
+        <span class="author">Zhixun&nbsp;Li<sup>2,4</sup></span>,
+        <span class="author">Ziyu&nbsp;Liu<sup>5</sup></span>,
+        <span class="author">Yuhang&nbsp;Zang<sup>6</sup></span>,
+        <span class="author">Weixiang&nbsp;Yu<sup>2</sup></span>,
+        <span class="author">Cheng&nbsp;Lu<sup>2</sup></span>,
+        <span class="author">Chonggao&nbsp;Sun<sup>2</sup></span>,
+        <span class="author">Tong&nbsp;Zhou<sup>2</sup></span>,
+        <span class="author">Dahua&nbsp;Lin<sup>4,†</sup></span>,
+        <span class="author">Hang&nbsp;Zhang<sup>2,†</sup></span>,
+        <span class="author">Shuai&nbsp;Bai<sup>2,†</sup></span>,
+        <span class="author">Dayiheng&nbsp;Liu<sup>2</sup></span>
+      </p>
+      <details class="author-affiliations" open>
+        <summary>Affiliations &amp; contribution notes <span class="plus" aria-hidden="true">+</span></summary>
+      <p class="affiliations"><span><sup>1</sup>Fudan University</span> <span><sup>2</sup>Alibaba Token Hub, Alibaba Group</span> <span><sup>3</sup>Zhejiang University</span> <span><sup>4</sup>The Chinese University of Hong Kong</span> <span><sup>5</sup>Shanghai Jiao Tong University</span> <span><sup>6</sup>Nanyang Technological University</span></p>
+      <p class="author-notes" id="author-notes"><span><sup>*</sup> Equal contribution</span><span><sup>†</sup> Corresponding authors</span></p>
+      </details>
       <div class="hero-actions">
-        <a class="button primary" href="paper/co-design-bench.pdf" target="_blank" rel="noopener"><span aria-hidden="true">▤</span> Read the paper</a>
+        <a class="button primary" href="paper/co-design-bench.pdf?v=20261023-v2" target="_blank" rel="noopener"><span aria-hidden="true">▤</span> Read the paper</a>
         <a class="button" href="#leaderboard">View scores <span aria-hidden="true">↗</span></a>
-        <a class="button" href="#cases"><span aria-hidden="true">◇</span> Explore real tasks</a>
-        <a class="button" href="#citation"><span aria-hidden="true">❝</span> Cite</a>
+        <a class="button" href="#intro-video" id="watch-demo"><span aria-hidden="true">▶</span> Watch the agent</a>
       </div>
-      <div class="hero-gallery" id="hero-gallery" role="group" aria-label="Example benchmark tasks"></div>
-      <div class="hero-caption"><span>Real requests. Runnable apps. Hidden criteria.</span><a href="#cases">Step inside a task <span aria-hidden="true">↗</span></a></div>
+      <div class="hero-demo" id="intro-video" aria-labelledby="demo-title">
+        <div class="demo-story">
+          <p class="eyebrow">Inside a real task</p>
+          <h2 id="demo-title">A video brief.<br> Three animations.<br> A working page.</h2>
+          <p>Watch an agent interpret a reference, edit an existing website, and check its work in the browser.</p>
+          <div class="demo-model"><img src="assets/models/qwen.png" width="22" height="22" alt=""><span>qwen3.8-max-0902</span></div>
+          <span class="demo-score"><i aria-hidden="true">✓</i> 6 / 6 criteria passed</span>
+          <button type="button" class="text-link" id="inspect-demo">Inspect this task <span aria-hidden="true">↗</span></button>
+        </div>
+        <figure class="demo-film">
+          <div class="demo-film-top"><span><i aria-hidden="true"></i> Agent run highlights</span><span id="demo-duration">28 sec</span></div>
+          <video id="intro-player" controls playsinline preload="metadata" poster="assets/demo/poster.webp" width="1280" height="720" aria-label="Edited highlights of an archived agent run, followed by a recording of the final website">
+            <source src="assets/demo/agent-edit-highlights.mp4" type="video/mp4">
+            <track kind="captions" src="assets/demo/captions-en.vtt" srclang="en" label="English">
+            <a href="assets/demo/agent-edit-highlights.mp4">Watch the agent run highlights</a>
+          </video>
+          <figcaption><span>Reference <span aria-hidden="true">→</span> Edit <span aria-hidden="true">→</span> Check <span aria-hidden="true">→</span> Result</span><span>Edited from an archived run</span></figcaption>
+        </figure>
+      </div>
       <div class="stat-row" role="group" aria-label="Benchmark at a glance">
-        <div><strong>273</strong><span>application revision tasks</span></div>
+        <div><strong>273</strong><span>revision tasks</span></div>
         <div><strong>2,331</strong><span>hidden acceptance criteria</span></div>
-        <div><strong>10</strong><span>agentic model endpoints</span></div>
+        <div><strong>10</strong><span>model endpoints</span></div>
         <div><strong>5</strong><span>input modalities</span></div>
       </div>
     </section>
 
-    <section class="results-section" id="leaderboard" aria-labelledby="leaderboard-title">
-      <div class="wrap section">
-        <div class="section-heading"><div><h2 id="leaderboard-title">Leaderboard.</h2><p>Ten model endpoints, one shared agentic harness, the same 273 tasks.</p></div></div>
-        <div class="table-toolbar">
-          <div class="toolbar-left">
-            <div class="segmented" role="group" aria-label="Task set"><button type="button" data-track="overall" aria-pressed="true">All 273</button><button type="button" data-track="me" aria-pressed="false">ME · 100</button><button type="button" data-track="re" aria-pressed="false">RE · 173</button></div>
-            <div class="segmented" role="group" aria-label="Table view"><button type="button" data-view="completion" aria-pressed="true">Completion</button><button type="button" data-view="rollout" aria-pressed="false">Rollout</button></div>
+    <section class="benchmark-section wrap section" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="benchmark-overview">
+        <div><p class="eyebrow">The benchmark</p><h2 id="benchmark-title">Real requests.<br> Working revisions.</h2></div>
+        <div><p>Agents receive an existing application and a user’s request, sometimes with images, audio, video or documents. Hidden expert criteria check what changed, what works, and what should be preserved.</p>
+          <div class="track-overview">
+            <article><span class="track-tag"><i></i>ME · 100 tasks</span><h3>Multimodal Editing</h3><p>Localized edits grounded in the page and its references.</p></article>
+            <article><span class="track-tag re-tag"><i></i>RE · 173 tasks</span><h3>Repository Editing</h3><p>Coordinated changes across a multi-file application.</p></article>
           </div>
-          <label class="search-box"><span aria-hidden="true">⌕</span><input id="model-search" type="search" aria-label="Search models" placeholder="Find a model…"></label>
         </div>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable leaderboard">
-          <table class="leaderboard" id="score-table"><caption class="sr-only" id="score-caption">Leaderboard</caption><thead id="score-head"></thead><tbody id="score-body"></tbody></table>
-        </div>
-        <div class="mix-legend" id="mix-legend" hidden><span><i style="background:var(--exec)"></i>Execution (Bash)</span><span><i style="background:var(--insp)"></i>Inspection (Read / Grep / Glob)</span><span><i style="background:var(--mod)"></i>Modification (Edit / Write)</span><span><i style="background:var(--aux)"></i>Auxiliary</span></div>
-        <p class="table-note" id="table-note"></p>
-        <details class="metric-guide">
-          <summary>How to read this table <span class="plus" aria-hidden="true">+</span></summary>
-          <div class="metric-grid">
-            <p><b>Strict completion</b>Per task, the fraction of criteria judged PASS; averaged over tasks with equal weight so long rubrics do not dominate. PARTIAL earns no strict credit.</p>
-            <p><b>Graded completion</b>Same average with PARTIAL worth 0.5. On a normalized scale, Full-pass ≤ Strict ≤ Graded.</p>
-            <p><b>Full-pass rate</b>Percentage of tasks where every criterion is PASS — complete delivery. The gap to Strict is criterion credit from unfinished tasks.</p>
-            <p><b>Turns · Len.</b>Median solver turns per task, and mean output tokens per turn.</p>
-            <p><b>Tokens</b>Total token traffic per task in millions, including retries and reported cache usage under each API’s accounting; an execution measure, not a monetary cost.</p>
-            <p><b>Tool mix</b>Share of tool calls for execution (Bash), inspection (Read / Grep / Glob) and modification (Edit / Write); the remainder is auxiliary.</p>
-          </div>
-        </details>
       </div>
-    </section>
-
-    <section class="motivation wrap" aria-labelledby="motivation-title">
-      <div class="motivation-grid">
-        <div>
-          <p class="eyebrow">Why another benchmark</p>
-          <h2 id="motivation-title">Agentic execution <br>changes the score.</h2>
-          <p>On the same 150 WebCompass-edit tasks, switching <code>qwen3.7-plus</code> from single-shot to agentic execution raises mean graded feature completion from 73.6% to 95.1%, with the feature rubric, judge and render pipeline held fixed. With agentic execution, <code>opus-4-8</code> reaches 99.4%.</p>
-          <p>Co-Design Bench evaluates real users’ compound revisions under iterative tool access, and reports both criterion satisfaction and complete task success.</p>
-          <p class="micro">The cross-benchmark bars use different task pools and evaluation protocols; the paired WebCompass comparison concerns execution within a fixed task set (paper, Appendix A).</p>
-        </div>
-        <figure class="figure-card" id="saturation-figure">
-          <div class="figure-head"><h3>Mean graded completion (%)</h3><span>Figure 1(a), redrawn</span></div>
-          <div id="saturation-chart" class="svg-chart" role="figure" aria-label="Bar chart: on WebCompass-edit, single-shot qwen3.7-plus 73.6, agentic qwen3.7-plus 95.1, agentic opus-4-8 99.4; on Co-Design Bench, agentic Opus 64.9, leaving 35.1 points of headroom."></div>
-          <figcaption>The Co-Design Bench bar (n = 273) matches <code>opus-4-8</code>’s graded completion over all tasks in Table 5 (0.649).</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="intro wrap section" id="benchmark" aria-labelledby="benchmark-title">
-      <div class="section-label">The benchmark</div>
+      <details class="foldout benchmark-foldout">
+        <summary><span>Benchmark details <small>Task construction, statistics &amp; taxonomy</small></span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="foldout-body">
       <div class="intro-layout">
-        <h2 id="benchmark-title">From a real request <br>to a working revision.</h2>
+        <h3>Task formulation</h3>
         <div>
           <p class="lead">Can a coding agent turn a user’s multimodal request into a complete, working revision of an existing application?</p>
           <p>Each task pairs a normalized request with a runnable pre-edit application and hidden, expert-authored acceptance criteria. Requests can carry image, audio, video or document evidence. The criteria specify the requested outcomes and any preservation constraints while permitting any valid implementation — so no gold code or target screenshot is needed.</p>
@@ -206,18 +208,44 @@
         <div class="table-legend"><span><span class="mark yes" aria-hidden="true">✓</span> reported</span><span><span class="mark no" aria-hidden="true">×</span> not reported</span><span><span class="mark partial" aria-hidden="true">△</span> subset or metric-dependent</span><span>T / I / V / A / D = text / image / video / audio / document</span></div>
         <p class="micro compare-defs">Real-user sessions are requests from real-user coding histories, excluding standalone issue reports (DesignBench’s session requests belong to its editing subset). Reference-free acceptance needs no gold code or target screenshot; a pre-edit baseline is allowed. Agentic evaluation actively chooses tools and actions, beyond fixed test replay. Adversarial verification separately challenges initial positive verdicts. Definitions follow the paper’s Table 1.</p>
       </div>
+        </div>
+      </details>
     </section>
 
-    <section class="results-section" id="results" aria-labelledby="results-title">
+    <section class="results-section" id="leaderboard" aria-labelledby="leaderboard-title">
       <div class="wrap section">
-        <div class="section-label">The results</div>
-        <div class="section-heading"><div><h2 id="results-title">Coverage is not delivery.</h2></div></div>
-        <div class="finding-row">
-          <div><span class="finding-label">Highest strict completion</span><strong>69.9<span>%</span></strong><p><code>gpt-6-astra</code> passes 69.9% of criteria per task on average across all 273 tasks.</p></div>
-          <div><span class="finding-label">Top full-pass rate</span><strong>26.4<span>%</span></strong><p>Even the leader satisfies every criterion on only about one task in four; 73.6% keep at least one unmet requirement.</p></div>
-          <div><span class="finding-label">Broader edits score lower</span><strong>−6.3<span>pts</span></strong><p>Every endpoint scores lower on repository edits spanning three or four change types than on one or two.</p></div>
+        <div class="section-heading"><div><h2 id="leaderboard-title">Leaderboard.</h2><p>Ten models. One shared harness. All 273 tasks.</p></div></div>
+        <div class="finding-row compact-findings">
+          <div><span class="finding-label">Best strict completion</span><strong>69.9<span>%</span></strong><p>Mean criteria passed per task.</p></div>
+          <div><span class="finding-label">Best full-pass rate</span><strong>26.4<span>%</span></strong><p>Only one in four tasks fully delivered.</p></div>
+          <div><span class="finding-label">Broader repository edits</span><strong>−6.3<span>pts</span></strong><p>Strict-completion gap: 3–4 vs. 1–2 edit types.</p></div>
         </div>
-
+        <div class="table-toolbar">
+          <div class="toolbar-left">
+            <div class="segmented" role="group" aria-label="Task set"><button type="button" data-track="overall" aria-pressed="true">All 273</button><button type="button" data-track="me" aria-pressed="false">ME · 100</button><button type="button" data-track="re" aria-pressed="false">RE · 173</button></div>
+            <div class="segmented" role="group" aria-label="Table view"><button type="button" data-view="completion" aria-pressed="true">Completion</button><button type="button" data-view="rollout" aria-pressed="false">Rollout</button></div>
+          </div>
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="model-search" type="search" aria-label="Search models" placeholder="Find a model…"></label>
+        </div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Sortable leaderboard">
+          <table class="leaderboard" id="score-table"><caption class="sr-only" id="score-caption">Leaderboard</caption><thead id="score-head"></thead><tbody id="score-body"></tbody></table>
+        </div>
+        <div class="mix-legend" id="mix-legend" hidden><span><i style="background:var(--exec)"></i>Execution (Bash)</span><span><i style="background:var(--insp)"></i>Inspection (Read / Grep / Glob)</span><span><i style="background:var(--mod)"></i>Modification (Edit / Write)</span><span><i style="background:var(--aux)"></i>Auxiliary</span></div>
+        <p class="table-note" id="table-note"></p>
+        <details class="metric-guide">
+          <summary>How to read this table <span class="plus" aria-hidden="true">+</span></summary>
+          <div class="metric-grid">
+            <p><b>Strict completion</b>Per task, the fraction of criteria judged PASS; averaged over tasks with equal weight so long rubrics do not dominate. PARTIAL earns no strict credit.</p>
+            <p><b>Graded completion</b>Same average with PARTIAL worth 0.5. On a normalized scale, Full-pass ≤ Strict ≤ Graded.</p>
+            <p><b>Full-pass rate</b>Percentage of tasks where every criterion is PASS — complete delivery. The gap to Strict is criterion credit from unfinished tasks.</p>
+            <p><b>Turns · Len.</b>Median solver turns per task, and mean output tokens per turn.</p>
+            <p><b>Tokens</b>Total token traffic per task in millions, including retries and reported cache usage under each API’s accounting; an execution measure, not a monetary cost.</p>
+            <p><b>Tool mix</b>Share of tool calls for execution (Bash), inspection (Read / Grep / Glob) and modification (Edit / Write); the remainder is auxiliary.</p>
+          </div>
+        </details>
+        <details class="foldout" id="results">
+          <summary><span>Explore the results <small>Rankings, delivery gap &amp; task groups</small></span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="foldout-body">
         <div class="analysis-grid">
           <div class="chart-card">
             <p class="eyebrow">Rankings move</p>
@@ -269,20 +297,35 @@
             <p>Image inspections average 14.47 per run on ME and 2.78 on RE, while the Edit/Write share of tool calls rises from 7.3% to 27.6%. These profiles describe effort; they do not isolate causal effects.</p>
           </article>
         </div>
+    <div class="motivation" aria-labelledby="motivation-title">
+      <div class="motivation-grid">
+        <div>
+          <p class="eyebrow">Why another benchmark</p>
+          <h2 id="motivation-title">Agentic execution <br>changes the score.</h2>
+          <p>On the same 150 WebCompass-edit tasks, switching <code>qwen3.7-plus</code> from single-shot to agentic execution raises mean graded feature completion from 73.6% to 95.1%, with the feature rubric, judge and render pipeline held fixed. With agentic execution, <code>opus-4-8</code> reaches 99.4%.</p>
+          <p>Co-Design Bench evaluates real users’ compound revisions under iterative tool access, and reports both criterion satisfaction and complete task success.</p>
+          <p class="micro">The cross-benchmark bars use different task pools and evaluation protocols; the paired WebCompass comparison concerns execution within a fixed task set (paper, Appendix A).</p>
+        </div>
+        <figure class="figure-card" id="saturation-figure">
+          <div class="figure-head"><h3>Mean graded completion (%)</h3><span>Figure 1(a), redrawn</span></div>
+          <div id="saturation-chart" class="svg-chart" role="figure" aria-label="Bar chart: on WebCompass-edit, single-shot qwen3.7-plus 73.6, agentic qwen3.7-plus 95.1, agentic opus-4-8 99.4; on Co-Design Bench, agentic Opus 64.9, leaving 35.1 points of headroom."></div>
+          <figcaption>The Co-Design Bench bar (n = 273) matches <code>opus-4-8</code>’s graded completion over all tasks in Table 5 (0.649).</figcaption>
+        </figure>
+      </div>
+    </div>
+
+          </div>
+        </details>
       </div>
     </section>
 
     <section class="wrap section showcase-section" id="cases" aria-labelledby="cases-title">
       <div class="section-label">The tasks</div>
-      <div class="section-heading"><div><h2 id="cases-title">A closer look at real tasks.</h2><p>Open a task. Read the request. See qwen3.8-max-0902’s output.</p></div></div>
-      <p class="gallery-description">These examples from the public Multimodal Editing task set pair a runnable page and an annotated target with evidence the agent must interpret — a supplier receipt, an audit export, a video of text animations. The hidden rubric then tests the requested change, every dependent update, and what must remain untouched.</p>
+      <div class="section-heading"><div><h2 id="cases-title">Three requests, three kinds of edits.</h2><p>Open a task to inspect its inputs, model output and acceptance criteria.</p></div></div>
       <div class="showcase-grid three" id="showcase-grid"></div>
-    </section>
-
-    <section class="run-section" id="inside-a-run" aria-labelledby="run-title">
-      <div class="wrap section">
-        <div class="section-label">Inside a run</div>
-        <div class="section-heading"><div><h2 id="run-title">Watch an agent work.</h2><p>One task. One harness. qwen3.8-max-0902.</p></div></div>
+      <details class="foldout" id="inside-a-run">
+        <summary><span>Read the agent’s run <small>Actual tool calls &amp; browser observations</small></span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="foldout-body">
         <p class="gallery-description">A six-second reference clip shows three different text animations. The agent must map them to the hero, section title and quotation, loop each effect, and preserve the wording and page layout. This timeline follows the archived qwen3.8-max-0902 run, including the frames and screenshots the model actually looked at.</p>
         <div class="run-picker" id="run-picker" role="group" aria-label="Choose a model"></div>
         <p class="run-compare-note run-why">qwen3.8-max-0902 passes all six hidden criteria: 100% strict completion in the frozen paper run.</p>
@@ -294,18 +337,22 @@
         </div>
         <p class="micro" id="run-footnote">The timeline shows selected steps; the counts include every call in the archived run.</p>
 
-      </div>
+        </div>
+      </details>
     </section>
 
     <section class="evaluation-section" id="evaluation" aria-labelledby="evaluation-title"><div class="wrap section">
       <div class="section-label">The evaluation</div>
-      <div class="section-heading"><div><h2 id="evaluation-title">Judge, then refute.</h2><p>Credit requires evidence that matches the claim.</p></div></div>
+      <div class="section-heading"><div><h2 id="evaluation-title">Judge, then refute.</h2><p>Test the application, then challenge every positive verdict.</p></div></div>
       <div class="evaluation-cards">
-        <article><span class="step-number">01 / Build</span><h3>Run the candidate</h3><p>The final application is mirrored into an isolated sandbox, built with Vite or served as static HTML, and rendered in headless Chrome. Failed builds or missing DOM nodes invalidate render-dependent criteria.</p></article>
-        <article><span class="step-number">02 / Gather</span><h3>Evidence per claim</h3><p>Source diffs establish static properties, screenshots support visual requirements, and recorded Playwright actions establish interactions and their resulting state. A handler in source alone cannot prove a feature is reachable.</p></article>
-        <article><span class="step-number">03 / Judge</span><h3>Verdict per criterion</h3><p>A fixed agentic evaluator grades every hidden criterion PASS, PARTIAL or FAIL, with the pre-edit baseline available to ground what had to change.</p></article>
-        <article><span class="step-number">04 / Refute</span><h3>Challenge every credit</h3><p>A separate LLM verifier re-examines PASS and PARTIAL verdicts for stubs, hardcoded outputs, unreachable entry points and failures under varied inputs. Audits abort scoring when required evidence is missing.</p></article>
+        <article><span class="step-number">01 / Build</span><h3>Run the candidate</h3><p>Build and launch the final application in an isolated sandbox.</p></article>
+        <article><span class="step-number">02 / Gather</span><h3>Evidence per claim</h3><p>Inspect source, screenshots and browser interactions for each requirement.</p></article>
+        <article><span class="step-number">03 / Judge</span><h3>Verdict per criterion</h3><p>Grade each hidden criterion PASS, PARTIAL or FAIL against the starting app.</p></article>
+        <article><span class="step-number">04 / Refute</span><h3>Challenge every credit</h3><p>A separate verifier challenges credit for stubs, hardcoding and unreachable features.</p></article>
       </div>
+      <details class="foldout">
+        <summary><span>Scoring definitions</span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="foldout-body">
       <div class="score-formula" role="group" aria-label="Scoring definitions">
         <div class="formula-grid">
           <div><span>Strict completion</span><p><em>R</em><sub>t</sub> = <span class="frac"><span>#&#8202;PASS</span><span><em>n</em><sub>t</sub></span></span></p><small>fully satisfied criteria in task t</small></div>
@@ -315,6 +362,8 @@
         <div class="verdict-row" role="group" aria-label="Verdict values"><span class="verdict pass"><i></i>PASS = 1</span><span class="verdict partial"><i></i>PARTIAL = 0.5 graded · 0 strict</span><span class="verdict fail"><i></i>FAIL = 0</span></div>
         <p class="formula-note">Task means weight all 273 tasks equally, so long rubrics do not dominate. On a common 0–1 scale <b>F ≤ R̄ ≤ Ḡ</b>, and a high R̄ can coexist with a low F when unmet requirements are spread across many tasks.</p>
       </div>
+        </div>
+      </details>
       <details class="pipeline-details">
         <summary>See the full evaluation pipeline <span class="plus" aria-hidden="true">+</span></summary>
         <figure>
@@ -324,22 +373,23 @@
       </details>
     </div></section>
 
-    <section class="citation-section" id="citation" aria-labelledby="citation-title"><div class="wrap section">
-      <div class="section-label">Cite</div>
+    <div class="wrap resources-wrap">
+      <details class="foldout" id="citation">
+        <summary><span>Paper &amp; page data</span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="foldout-body">
       <div class="citation-layout">
         <div>
-          <h2 id="citation-title">Cite Co-Design Bench.</h2>
+          <h3>Project resources</h3>
           <ul class="resource-list">
-            <li><a class="inline-link" href="paper/co-design-bench.pdf" target="_blank" rel="noopener">Paper (PDF)</a><span>22 pages · with appendix</span></li>
+            <li><a class="inline-link" href="paper/co-design-bench.pdf?v=20261023-v2" target="_blank" rel="noopener">Paper (PDF)</a><span>22 pages · with appendix</span></li>
             <li><a class="inline-link" href="data/site-data.json" download>Page data (JSON)</a><span>leaderboard, chart, task and run data</span></li>
           </ul>
         </div>
-        <div class="bibtex">
-          <button class="copy-button" type="button" id="copy-bibtex">Copy</button>
-<pre id="bibtex-text"></pre>
-        </div>
+
       </div>
-    </div></section>
+        </div>
+      </details>
+    </div>
   </main>
 
   <footer class="wrap">

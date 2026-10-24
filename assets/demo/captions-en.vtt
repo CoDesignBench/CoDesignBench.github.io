@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00.000 --> 00:03.750
+A real user asks the agent to reproduce three video effects on three page headings.
+
+00:03.750 --> 00:07.750
+The agent extracts 120 frames and inspects the three motion patterns.
+
+00:07.750 --> 00:11.250
+It adds scoped shimmer, hue-cycling and character animations.
+
+00:11.250 --> 00:14.250
+Browser captures reveal disappearing text. The agent repairs the shimmer.
+
+00:14.250 --> 00:18.600
+Final page recording: the first heading uses a moving shimmer.
+
+00:18.600 --> 00:23.600
+The routine heading cycles through hues.
+
+00:23.600 --> 00:28.000
+The quotation animates per character. All six strict criteria pass.
