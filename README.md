@@ -62,7 +62,7 @@ viewport. Videos do not autoplay on page load.
 - **Link previews.** `og:image` and `twitter:image` use `https://codesignbench.github.io/assets/social.png`. Update both if the deployment domain changes.
 - **Authors.** The 16 authors, six affiliations, equal-contribution markers, and corresponding-author markers match the project's arXiv submission v2 (2026-10-23), verified against its `authors.tex` and first PDF page. They are written in `index.html`. Add a citation record once the public paper identifier is available.
 - **Paper PDF.** `paper/co-design-bench.pdf` is the matching arXiv submission v2 PDF (2026-10-23). Its SHA-256 is `996b61e76c822addf4275a972823a76c1d27611a2dd27583f0bf46318a64eda5`. It contains the paper's Repository Editing examples (Figure 1b, Figure 6); the page itself shows only aggregate RE results.
-- **Code and dataset links.** None are shown yet. Add buttons in the hero once public URLs exist.
+- **Code and dataset links.** Paper, GitHub, and Hugging Face share the first hero action row, with icons. GitHub and Hugging Face are disabled and labeled “Coming soon” below their buttons; replace them with links once public URLs exist. View scores and Watch the agent appear in a second row.
 - **Task material.** All three displayed tasks (`f725ea72`, `b0e36f34`, `7d7953f8`) belong to the 96-task public ME release. The agent-run section uses `7d7953f8`. The public release has 521 criteria; the paper's aggregate results still cover the full 273-task evaluation set. The bundled paper is the matching arXiv submission v2, with its original figures.
 
 ## Files

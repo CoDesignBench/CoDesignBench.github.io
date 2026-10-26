@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
   <script>if (/^https?:/.test(location.protocol)) ['dm-serif-display-normal-latin', 'dm-sans-normal-latin'].forEach(function (f) { var l = document.createElement('link'); l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous'; l.href = 'vendor/fonts/' + f + '.woff2'; document.head.appendChild(l); });</script>
   <link rel="stylesheet" href="vendor/fonts.css">
-  <link rel="stylesheet" href="style.css?v=20261024-table-v2">
+  <link rel="stylesheet" href="style.css?v=20261026-resource-icons">
   <script defer src="data/site-data.js?v=20261023-qwen"></script>
   <script defer src="app.js?v=20261024-table-v2"></script>
 </head>
@@ -59,9 +59,38 @@
       <p class="author-notes" id="author-notes"><span><sup>*</sup> Equal contribution</span><span><sup>†</sup> Corresponding authors</span></p>
       </details>
       <div class="hero-actions">
-        <a class="button primary" href="paper/co-design-bench.pdf?v=20261023-v2" target="_blank" rel="noopener"><span aria-hidden="true">▤</span> Read the paper</a>
-        <a class="button" href="#leaderboard">View scores <span aria-hidden="true">↗</span></a>
-        <a class="button" href="#intro-video" id="watch-demo"><span aria-hidden="true">▶</span> Watch the agent</a>
+        <div class="hero-resource-row" role="group" aria-label="Project resources">
+          <div class="hero-resource">
+            <a class="button primary" href="paper/co-design-bench.pdf?v=20261023-v2" target="_blank" rel="noopener">
+              <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+              <span>Paper</span>
+            </a>
+          </div>
+          <div class="hero-resource">
+            <button class="button" type="button" disabled aria-describedby="github-status">
+              <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .297C5.37.297 0 5.67 0 12.297c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.652.241 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.805 5.628-5.475 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              <span>GitHub</span>
+            </button>
+            <span class="resource-status" id="github-status">Coming soon</span>
+          </div>
+          <div class="hero-resource">
+            <button class="button" type="button" disabled aria-describedby="huggingface-status">
+              <img class="button-icon button-icon--huggingface" src="assets/icons/huggingface.svg" width="22" height="22" alt="">
+              <span>Hugging Face</span>
+            </button>
+            <span class="resource-status" id="huggingface-status">Coming soon</span>
+          </div>
+        </div>
+        <div class="hero-explore-row" role="group" aria-label="Explore the benchmark">
+          <a class="button" href="#leaderboard">
+            <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4v16h16M8 16v-4M12 16V8M16 16v-7"/></svg>
+            <span>View scores</span>
+          </a>
+          <a class="button" href="#intro-video" id="watch-demo">
+            <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z" fill="currentColor" stroke="none"/></svg>
+            <span>Watch the agent</span>
+          </a>
+        </div>
       </div>
       <div class="hero-demo" id="intro-video" aria-labelledby="demo-title">
         <div class="demo-story">
@@ -214,11 +243,13 @@
 
     <section class="results-section" id="leaderboard" aria-labelledby="leaderboard-title">
       <div class="wrap section">
-        <div class="section-heading"><div><h2 id="leaderboard-title">Leaderboard.</h2><p>Ten models. One shared harness. All 273 tasks.</p></div></div>
-        <div class="finding-row compact-findings">
-          <div><span class="finding-label">Best strict completion</span><strong>69.9<span>%</span></strong><p>Mean criteria passed per task.</p></div>
-          <div><span class="finding-label">Best full-pass rate</span><strong>26.4<span>%</span></strong><p>Only one in four tasks fully delivered.</p></div>
-          <div><span class="finding-label">Broader repository edits</span><strong>−6.3<span>pts</span></strong><p>Strict-completion gap: 3–4 vs. 1–2 edit types.</p></div>
+        <div class="leaderboard-intro">
+          <div class="section-heading leaderboard-heading"><div><h2 id="leaderboard-title">Leaderboard.</h2><p>Ten models. One shared harness. <span style="white-space:nowrap">All 273 tasks.</span></p></div></div>
+          <div class="finding-row compact-findings leaderboard-findings">
+            <div><span class="finding-label">Best strict completion</span><strong>69.9<span>%</span></strong><p>Mean criteria passed per task.</p></div>
+            <div><span class="finding-label">Best full-pass rate</span><strong>26.4<span>%</span></strong><p>Only one in four tasks fully delivered.</p></div>
+            <div><span class="finding-label">Broader repository edits</span><strong>−6.3<span>pts</span></strong><p>Strict-completion gap: 3–4 vs. 1–2 edit types.</p></div>
+          </div>
         </div>
         <div class="table-toolbar">
           <div class="toolbar-left">
@@ -342,13 +373,17 @@
     </section>
 
     <section class="evaluation-section" id="evaluation" aria-labelledby="evaluation-title"><div class="wrap section">
-      <div class="section-label">The evaluation</div>
-      <div class="section-heading"><div><h2 id="evaluation-title">Judge, then refute.</h2><p>Test the application, then challenge every positive verdict.</p></div></div>
-      <div class="evaluation-cards">
-        <article><span class="step-number">01 / Build</span><h3>Run the candidate</h3><p>Build and launch the final application in an isolated sandbox.</p></article>
-        <article><span class="step-number">02 / Gather</span><h3>Evidence per claim</h3><p>Inspect source, screenshots and browser interactions for each requirement.</p></article>
-        <article><span class="step-number">03 / Judge</span><h3>Verdict per criterion</h3><p>Grade each hidden criterion PASS, PARTIAL or FAIL against the starting app.</p></article>
-        <article><span class="step-number">04 / Refute</span><h3>Challenge every credit</h3><p>A separate verifier challenges credit for stubs, hardcoding and unreachable features.</p></article>
+      <div class="evaluation-overview">
+        <div class="evaluation-intro">
+          <div class="section-label">The evaluation</div>
+          <div class="section-heading"><div><h2 id="evaluation-title">Judge, then refute.</h2><p>Test the application, then challenge every positive verdict.</p></div></div>
+        </div>
+        <div class="evaluation-cards">
+          <article><span class="step-number">01 / Build</span><h3>Run the candidate</h3><p>Build and launch the final application in an isolated sandbox.</p></article>
+          <article><span class="step-number">02 / Gather</span><h3>Evidence per claim</h3><p>Inspect source, screenshots and browser interactions for each requirement.</p></article>
+          <article><span class="step-number">03 / Judge</span><h3>Verdict per criterion</h3><p>Grade each hidden criterion PASS, PARTIAL or FAIL against the starting app.</p></article>
+          <article><span class="step-number">04 / Refute</span><h3>Challenge every credit</h3><p>A separate verifier challenges credit for stubs, hardcoding and unreachable features.</p></article>
+        </div>
       </div>
       <details class="foldout">
         <summary><span>Scoring definitions</span><span class="plus" aria-hidden="true">+</span></summary>
